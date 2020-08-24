@@ -2,8 +2,10 @@
 
 function titleClickHandler(event) {
   console.log('Link was clicked!');
-  console.log(event);
-  /* remove class 'active' from all article links  */
+
+  const clickedElement = this;
+
+  /*[DONE]  remove class 'active' from all article links  */
   const activeLinks = document.querySelectorAll('.titles a.active');
   for (let activeLink of activeLinks) {
 
@@ -15,13 +17,17 @@ function titleClickHandler(event) {
   }
 
 
-  /* add class 'active' to the clicked link */
+  /* [DONE] add class 'active' to the clicked link */
 
-  /* remove class 'active' from all articles */
-  
+  console.log('clickedElemtn: ', clickedElement);
+  console.log('clickedElemtn2: ' + clickedElement);
+  clickedElement.classList.add('active'); // CZEMU NIE MA PODPOWIEDZI ??? 
+
+  /*[DONE]  remove class 'active' from all articles */
+
   const activeArticles = document.querySelectorAll('.posts article.active')
   for (let activeArticle of activeArticles) {
-    if(activeArticle.classList.contains('active')){
+    if (activeArticle.classList.contains('active')) {
       console.log("removing the active class  in class post class");
       activeArticle.classList.remove('active');
     }
