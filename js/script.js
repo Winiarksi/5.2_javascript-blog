@@ -35,7 +35,7 @@ function titleClickHandler(event) {
   /* [DONE] get 'href' attribute from the clicked link */
   const articleSelector = clickedElement.getAttribute('href');
   console.log('articleSelector1: ', articleSelector);
-  
+
   /* [DONE] find the correct article using the selector (value of 'href' attribute) */
   const targetArticle = document.querySelector(articleSelector);
   console.log('targetArticle: ', targetArticle);
@@ -51,3 +51,27 @@ const links = document.querySelectorAll('.titles a');
 for (let link of links) {
   link.addEventListener('click', titleClickHandler);
 }
+
+const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
+
+  function generateTitleLinks(){
+
+    /* remove contents of titleList */
+  
+    /* for each article */
+  
+      /* get the article id */
+  
+      /* find the title element */
+  
+      /* get the title from the title element */
+  
+      /* create HTML of the link */
+  
+      /* insert link into titleList */
+  
+  }
+  
+  generateTitleLinks();
