@@ -63,17 +63,20 @@ function generateTitleLinks() {
   titleList.innerHTML = "";
 
   /* for each article */
+  const articles = document.querySelectorAll(optArticleSelector);
+  for (let article of articles) {
+    /* get the article id */
+    const articleid = article.getAttribute('id');
 
-  /* get the article id */
+    /* find the title element */
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    
+    /* get the title from the title element */
 
-  /* find the title element */
+    /* create HTML of the link */
 
-  /* get the title from the title element */
-
-  /* create HTML of the link */
-
-  /* insert link into titleList */
-
+    /* insert link into titleList */
+  }
 }
 
 generateTitleLinks();
