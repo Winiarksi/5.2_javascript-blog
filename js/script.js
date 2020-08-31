@@ -90,13 +90,16 @@ function titleClickHandler(event) {
 
 }
 
-const optArticleSelector = '.post',
+/* const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
+  optTitleListSelector = '.titles'; */
+
+  const optArticleTagsSelector = '.post-tags .list';
 
 function generateTags(){
   /* find all articles */
-
+  const articlesForTags = document.querySelectorAll(optArticleSelector);
+  
   /* START LOOP: for every article: */
 
     /* find tags wrapper */
