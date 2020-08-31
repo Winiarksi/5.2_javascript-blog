@@ -16,7 +16,7 @@ function generateTitleLinks() {
 
   /* remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
-  titleList.innerHTML = "";
+  titleList.innerHTML = '';
 
   /* for each article */
   const articles = document.querySelectorAll(optArticleSelector);
@@ -32,7 +32,7 @@ function generateTitleLinks() {
     /* create HTML of the link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
-    console.log('linkHTML ' + linkHTML)
+    console.log('linkHTML ' + linkHTML);
 
     /* insert link into titleList */
     html = html + linkHTML;
@@ -69,10 +69,10 @@ function titleClickHandler(event) {
 
   /*[DONE]  remove class 'active' from all articles */
 
-  const activeArticles = document.querySelectorAll('.posts article.active')
+  const activeArticles = document.querySelectorAll('.posts article.active');
   for (let activeArticle of activeArticles) {
     if (activeArticle.classList.contains('active')) {
-      console.log("removing the active class  in class post class");
+      console.log('removing the active class  in class post class');
       activeArticle.classList.remove('active');
     }
   }
