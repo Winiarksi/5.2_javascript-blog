@@ -90,6 +90,10 @@ function titleClickHandler(event) {
 
 }
 
+const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
+
 function generateTags(){
   /* find all articles */
 
