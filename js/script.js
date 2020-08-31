@@ -55,7 +55,7 @@ function titleClickHandler(event) {
   for (let activeLink of activeLinks) {
 
     if (activeLink.classList.contains('active')) {
-      console.log("removing the active class in class title class");
+      console.log('removing the active class in class title class');
       activeLink.classList.remove('active');
     }
 
@@ -89,3 +89,31 @@ function titleClickHandler(event) {
   console.log('targetArticle2: ', targetArticle);
 
 }
+
+function generateTags(){
+  /* find all articles */
+
+  /* START LOOP: for every article: */
+
+    /* find tags wrapper */
+
+    /* make html variable with empty string */
+
+    /* get tags from data-tags attribute */
+
+    /* split tags into array */
+
+    /* START LOOP: for each tag */
+
+      /* generate HTML of the link */
+
+      /* add generated code to html variable */
+
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+
+  /* END LOOP: for every article: */
+}
+
+generateTags();
