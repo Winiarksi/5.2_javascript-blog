@@ -16,7 +16,6 @@ function generateTitleLinks() {
 
   /* remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
-  titleList.innerHTML = '';
 
   /* for each article */
   const articles = document.querySelectorAll(optArticleSelector);
@@ -94,33 +93,45 @@ function titleClickHandler(event) {
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles'; */
 
-  const optArticleTagsSelector = '.post-tags .list';
+const optArticleTagsSelector = '.post-tags .list';
 
-function generateTags(){
+function generateTags() {
   /* find all articles */
   const articlesForTags = document.querySelectorAll(optArticleSelector);
-  
+  console.log(articlesForTags);
+
   /* START LOOP: for every article: */
+  for (let article of articlesForTags) {
 
     /* find tags wrapper */
+    const tagsWrapper = document.querySelector(optArticleTagsSelector);
 
     /* make html variable with empty string */
+    html = '';
 
     /* get tags from data-tags attribute */
+    const articleTags = article.getAttribute('data-tags');
 
     /* split tags into array */
+    const articleTagsArray = articleTags.split(' ');
+    console.log('tags: ', articleTagsArray);
 
     /* START LOOP: for each tag */
-
+    for (let tag of articleTagsArray) {
       /* generate HTML of the link */
+      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
 
       /* add generated code to html variable */
-
-    /* END LOOP: for each tag */
+      html = html + linkHTML;
+      console.log(html);
+      /* END LOOP: for each tag */
+    }
 
     /* insert HTML of all the links into the tags wrapper */
-
-  /* END LOOP: for every article: */
+    tagsWrapper.innerHTML = html;
+    
+    /* END LOOP: for every article: */
+  }
 }
 
 generateTags();
