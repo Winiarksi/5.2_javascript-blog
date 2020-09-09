@@ -1,16 +1,18 @@
 'use strict';
 
-const links = document.querySelectorAll('.titles a');
-
-for (let link of links) {
-  link.addEventListener('click', titleClickHandler);
-}
-
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles';
 
 let html;
+
+function linksAddEventListener() {
+  const links = document.querySelectorAll('.titles a');
+
+  for (let link of links) {
+    link.addEventListener('click', titleClickHandler);
+  }
+}
 
 function generateTitleLinks(customSelector = '') {
 
@@ -39,6 +41,8 @@ function generateTitleLinks(customSelector = '') {
   }
 
   titleList.innerHTML = html;
+
+  linksAddEventListener();
 }
 
 generateTitleLinks();
@@ -64,7 +68,7 @@ function titleClickHandler(event) {
 
   console.log('clickedElemtn: ', clickedElement);
   console.log('clickedElemtn2: ' + clickedElement);
-  clickedElement.classList.add('active'); // CZEMU NIE MA PODPOWIEDZI ??? 
+  clickedElement.classList.add('active');
 
   /*[DONE]  remove class 'active' from all articles */
 
@@ -89,9 +93,6 @@ function titleClickHandler(event) {
 
 }
 
-/* const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles'; */
 
 const optArticleTagsSelector = '.post-tags .list';
 generateTags();
@@ -105,7 +106,7 @@ function generateTags() {
   for (let article of articlesForTags) {
 
     /* find tags wrapper */
-    const tagsWrapper = document.querySelector(optArticleTagsSelector);
+    const tagsWrapper = article.querySelector(optArticleTagsSelector);
     console.log('tagsWrapper: ', tagsWrapper);
     console.log('tagsWrapper2: ' + tagsWrapper);
     /* make html variable with empty string */
@@ -131,6 +132,7 @@ function generateTags() {
 
     /* insert HTML of all the links into the tags wrapper */
     tagsWrapper.innerHTML = html;
+    console.error(tagsWrapper);
 
     /* END LOOP: for every article: */
   }
@@ -138,7 +140,7 @@ function generateTags() {
 
 
 /**
- * Dodajemy akcję po kliknięciu w tag
+ * Dodajemy akcja po kliknieciu w tag
  */
 function tagClickHandler(event) {
   /* prevent default action for this event */
@@ -152,6 +154,7 @@ function tagClickHandler(event) {
   console.log('clickedElement:', clickedElement);
 
   /* make a new constant "href" and read the attribute "href" of the clicked element */
+  
   const href = this.getAttribute('href');
   console.log('tag before replace: ' + href);
   /* make a new constant "tag" and extract tag from the "href" constant */
