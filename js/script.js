@@ -154,7 +154,7 @@ function tagClickHandler(event) {
   console.log('clickedElement:', clickedElement);
 
   /* make a new constant "href" and read the attribute "href" of the clicked element */
-  
+
   const href = this.getAttribute('href');
   console.log('tag before replace: ' + href);
   /* make a new constant "tag" and extract tag from the "href" constant */
@@ -212,21 +212,30 @@ generateAuthors();
 
 function generateAuthors() {
   /* find all articles */
-  const articlesForTags = document.querySelectorAll(optArticleSelector);
-  console.log(articlesForTags);
+  const articlesForAuthors = document.querySelectorAll(optArticleSelector);
+  console.log('articlesForAuthors: ' + articlesForAuthors);
 
   /* START LOOP: for every article: */
-  for (let article of articlesForTags) {
+  for (let author of articlesForAuthors) {
 
     /* find authors wrapper */
-    const authorsWrapper = article.querySelector(optArticlePostSelector);
+    const authorsWrapper = author.querySelector(optArticlePostSelector);
     console.log('authorsWrapper: ', authorsWrapper);
     /* make html variable with empty string */
-    html = '';
+    let html = '';
+
+    /* get authors from data-author attribute */
+    const articleAuthor = author.getAttribute('data-author');
+
+    /* generate HTML of the link */
+    const linkHTML = '<li><a href="#">' + articleAuthor + '</a></li>';
+    html = html + linkHTML;
+    console.log('html: ' + html);
 
     /* insert HTML of all the links into the tags wrapper */
-    // articleTags.innerHTML = html;
-    // console.error(tagsWrapper);
+    authorsWrapper.innerHTML = html;
+    console.error('authorsWrapper: ' + authorsWrapper);
+    console.error('authorsWrapper2: ', authorsWrapper);
 
     /* END LOOP: for every article: */
   }
