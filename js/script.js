@@ -136,6 +136,7 @@ function generateTags() {
 
     /* END LOOP: for every article: */
   }
+
 }
 
 
@@ -215,11 +216,12 @@ function generateAuthors() {
   const articlesForAuthors = document.querySelectorAll(optArticleSelector);
   console.log('articlesForAuthors: ' + articlesForAuthors);
 
+  let authorsWrapper = '';
   /* START LOOP: for every article: */
   for (let author of articlesForAuthors) {
 
     /* find authors wrapper */
-    const authorsWrapper = author.querySelector(optArticlePostSelector);
+    authorsWrapper = author.querySelector(optArticlePostSelector);
     console.log('authorsWrapper: ', authorsWrapper);
     /* make html variable with empty string */
     let html = '';
@@ -230,13 +232,14 @@ function generateAuthors() {
     /* generate HTML of the link */
     const linkHTML = '<li><a href="#">' + articleAuthor + '</a></li>';
     html = html + linkHTML;
-    console.log('html: ' + html);
+    console.log('html: ', html);
 
     /* insert HTML of all the links into the tags wrapper */
     authorsWrapper.innerHTML = html;
-    console.error('authorsWrapper: ' + authorsWrapper);
-    console.error('authorsWrapper2: ', authorsWrapper);
+    console.log('authorsWrapper innerHTML: ', authorsWrapper);
 
     /* END LOOP: for every article: */
   }
+  console.log('authorsWrapper.length: ', authorsWrapper.classList.length);
+  console.log('authorsWrapper.length2: ', authorsWrapper);
 }
