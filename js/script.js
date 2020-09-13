@@ -205,3 +205,29 @@ function addClickListenersToTags() {
   }
 }
 addClickListenersToTags();
+
+
+const optArticlePostSelector = '.post-author';
+generateAuthors();
+
+function generateAuthors() {
+  /* find all articles */
+  const articlesForTags = document.querySelectorAll(optArticleSelector);
+  console.log(articlesForTags);
+
+  /* START LOOP: for every article: */
+  for (let article of articlesForTags) {
+
+    /* find authors wrapper */
+    const authorsWrapper = article.querySelector(optArticlePostSelector);
+    console.log('authorsWrapper: ', authorsWrapper);
+    /* make html variable with empty string */
+    html = '';
+
+    /* insert HTML of all the links into the tags wrapper */
+    // articleTags.innerHTML = html;
+    // console.error(tagsWrapper);
+
+    /* END LOOP: for every article: */
+  }
+}
