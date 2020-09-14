@@ -95,9 +95,13 @@ function titleClickHandler(event) {
 
 
 const optArticleTagsSelector = '.post-tags .list';
+// const optTagsListSelector = '.tags.list'; // czemu pisze się razem ? 
 generateTags();
 
 function generateTags() {
+  /* [NEW] create a new variable allTags with an empty array */
+  let allTags = [];
+
   /* find all articles */
   const articlesForTags = document.querySelectorAll(optArticleSelector);
   console.log(articlesForTags);
@@ -127,16 +131,30 @@ function generateTags() {
       /* add generated code to html variable */
       html = html + linkHTML;
       console.log('html+: ' + html);
+
+      /* [NEW] check if this link is NOT already in allTags */
+      if (allTags.indexOf(linkHTML) == -1) {
+        /* [NEW] add generated code to allTags array */
+        allTags.push(linkHTML);
+      }
+
+
       /* END LOOP: for each tag */
     }
 
     /* insert HTML of all the links into the tags wrapper */
     tagsWrapper.innerHTML = html;
-    console.error(tagsWrapper);
+ 
 
     /* END LOOP: for every article: */
   }
 
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector('.tags');
+  console.log('tagList: ', tagList );
+  /* [NEW] add html from allTags to tagList */
+  tagList.innerHTML = allTags.join(' ');
+  console.log('tagList.innerHTML: ', tagList );
 }
 
 
@@ -262,7 +280,7 @@ function authorClickHandler(event) {
   const href = this.getAttribute('href');
   console.log('tag before replace: ' + href);
 
-  
+
   // const author = href.replace('#author-', '');
   const author = this.getElementsByClassName('author-name')[0].innerHTML;
 
@@ -270,8 +288,8 @@ function authorClickHandler(event) {
 
   const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author-"]'); // do ogarnięcia 
 
-  for (let activeAuthorLink  of activeAuthorLinks) {
-    activeAuthorLink .classList.remove('active');
+  for (let activeAuthorLink of activeAuthorLinks) {
+    activeAuthorLink.classList.remove('active');
   }
 
   const hrefAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');// do ogarnięcia 
@@ -287,10 +305,10 @@ function authorClickHandler(event) {
 }
 
 const optArticleAuthorSelector = '.post .post-author';
-function addClickListenersToAuthors () {
+function addClickListenersToAuthors() {
   /* find all links to authors */
   console.log('addClickListenersToAuthors: find all links to authors');
-  const links = document.querySelectorAll(optArticleAuthorSelector  + '.post-author a, .list.authors a');
+  const links = document.querySelectorAll(optArticleAuthorSelector + '.post-author a, .list.authors a');
   /* START LOOP: for each link */
 
   for (let link of links) {
@@ -305,45 +323,4 @@ function addClickListenersToAuthors () {
 }
 addClickListenersToAuthors();
 
-const optTagsListSelector = .tags.list; // czemu pisze się razem ? 
 
-function generateTags(){
-  /* [NEW] create a new variable allTags with an empty array */
-  let allTags = [];
-
-  /* find all articles */
-
-  /* START LOOP: for every article: */
-
-    /* find tags wrapper */
-
-    /* make html variable with empty string */
-
-    /* get tags from data-tags attribute */
-
-    /* split tags into array */
-
-    /* START LOOP: for each tag */
-
-      /* generate HTML of the link */
-
-      /* add generated code to html variable */
-
-      /* [NEW] check if this link is NOT already in allTags */
-      if(allTags.indexOf(linkHTML) == -1){
-        /* [NEW] add generated code to allTags array */
-        allTags.push(linkHTML);
-      }
-
-    /* END LOOP: for each tag */
-
-    /* insert HTML of all the links into the tags wrapper */
-
-  /* END LOOP: for every article: */
-
-  /* [NEW] find list of tags in right column */
-  const tagList = document.querySelector('.tags');
-
-  /* [NEW] add html from allTags to tagList */
-  tagList.innerHTML = allTags.join(' ');
-}
