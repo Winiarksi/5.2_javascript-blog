@@ -99,8 +99,8 @@ const optArticleTagsSelector = '.post-tags .list';
 generateTags();
 
 function generateTags() {
-  /* [NEW] create a new variable allTags with an empty array */
-  let allTags = [];
+  /* [NEW] create a new variable allTags with an empty object */
+  let allTags = {};
 
   /* find all articles */
   const articlesForTags = document.querySelectorAll(optArticleSelector);
@@ -131,30 +131,43 @@ function generateTags() {
       /* add generated code to html variable */
       html = html + linkHTML;
       console.log('html+: ' + html);
+      console.log('tag+: ' + tag);
 
-      /* [NEW] check if this link is NOT already in allTags */
-      if (allTags.indexOf(linkHTML) == -1) {
-        /* [NEW] add generated code to allTags array */
-        allTags.push(linkHTML);
+      // if (allTags.indexOf(linkHTML) == -1) {
+
+      //   allTags.push(linkHTML);
+      // }
+
+      if (!allTags.hasOwnProperty(tag)) {
+        /* add tag to allTags object */
+        allTags[tag] = 1;
+      } else {
+        allTags[tag]++;
       }
-
-
       /* END LOOP: for each tag */
     }
 
     /* insert HTML of all the links into the tags wrapper */
     tagsWrapper.innerHTML = html;
- 
 
     /* END LOOP: for every article: */
   }
 
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags');
-  console.log('tagList: ', tagList );
-  /* [NEW] add html from allTags to tagList */
-  tagList.innerHTML = allTags.join(' ');
-  console.log('tagList.innerHTML: ', tagList );
+  console.log('tagList: ', tagList);
+  console.log('allTags: ', allTags);
+  console.log('tagList.innerHTML: ', tagList);
+
+
+  // const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+  let allTagsHTML = '';
+
+  for (let tag in allTags) {
+    allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
+  }
+
+  tagList.innerHTML = allTagsHTML;
 }
 
 
