@@ -86,7 +86,7 @@ function titleClickHandler(event) {
   if (articleSelector.includes('#article')) {
     console.log('articleSelector.includes(#article): ', articleSelector.includes('#article'));
 
-  } else if (articleSelector.includes('#tag-')){
+  } else if (articleSelector.includes('#tag-')) {
     console.log('articleSelector.includes(#tag-): ', articleSelector.includes('#tag-'));
     articleSelector = articleSelector.replace('tag-', '');
 
@@ -109,6 +109,21 @@ function titleClickHandler(event) {
 const optArticleTagsSelector = '.post-tags .list';
 // const optTagsListSelector = '.tags.list'; // czemu pisze się razem ? 
 generateTags();
+
+function calculateTagsParams(tags) {
+
+  const params = {
+    max: '0',
+    min: '999999'
+  };
+
+  for (let tag in tags) {
+    params.max = tags[tag] > params.max ? tags[tag] : params.max;
+    params.min = Math.min(tags[tag], params.min);
+  }
+  
+  return params;
+}
 
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty object */
@@ -164,12 +179,13 @@ function generateTags() {
 
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags');
-  console.log('tagList: ', tagList);
-  console.log('allTags: ', allTags);
-  console.log('tagList.innerHTML: ', tagList);
+  // console.log('tagList: ', tagList);
+  // console.log('allTags: ', allTags);
+  // console.log('tagList.innerHTML: ', tagList);
 
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams: ', tagsParams);
 
-  // const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
   let allTagsHTML = '';
 
   for (let tag in allTags) {
