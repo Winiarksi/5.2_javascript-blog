@@ -14,13 +14,6 @@ function linksAddEventListener() {
   }
 }
 
-// function linksAddEventTagListener() {
-//   const links = document.querySelectorAll('.list a');
-
-//   for (let link of links) {
-//     link.addEventListener('click', titleClickHandler);
-//   }
-// }
 
 function generateTitleLinks(customSelector = '') {
   console.log('generateTitleLinks: ' + customSelector);
