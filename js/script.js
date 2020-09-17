@@ -2,7 +2,10 @@
 
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
+  optTitleListSelector = '.titles',
+  optArticleTagsSelector = '.post-tags .list',
+  optCloudClassCount = 5,
+  optCloudClassPrefix = 'tag-size-';
 
 let html;
 
@@ -106,7 +109,7 @@ function titleClickHandler(event) {
 }
 
 
-const optArticleTagsSelector = '.post-tags .list';
+
 // const optTagsListSelector = '.tags.list'; // czemu pisze się razem ? 
 generateTags();
 
@@ -121,9 +124,19 @@ function calculateTagsParams(tags) {
     params.max = tags[tag] > params.max ? tags[tag] : params.max;
     params.min = Math.min(tags[tag], params.min);
   }
-  
+
   return params;
 }
+
+function calculateTagClass(count, params) {
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+  const classValue = optCloudClassPrefix + classNumber;
+  return classValue;
+}
+
 
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty object */
@@ -189,7 +202,14 @@ function generateTags() {
   let allTagsHTML = '';
 
   for (let tag in allTags) {
-    allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
+    console.log('tag: ', tag);
+    console.log('allTags[tag]: ', allTags[tag]);
+    console.log('tagsParams: ', tagsParams);
+    const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a></li>';
+
+    console.log('tagLinkHTML: ', tagLinkHTML);
+    allTagsHTML += tagLinkHTML;
+    // allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
   }
 
   tagList.innerHTML = allTagsHTML;
