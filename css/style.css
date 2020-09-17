@@ -44,6 +44,25 @@ body {
       flex: 1 0 0;
 }
 
+.tags {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
+  -ms-flex: 1 0 0px;
+      flex: 1 0 0;
+  text-decoration: none;
+}
+
+.tags li a {
+  padding: 8px 8px;
+  text-decoration: none;
+}
+
 .posts {
   -ms-flex: 2 0 0px;
       flex: 2 0 0;
@@ -107,5 +126,30 @@ body {
 
 .post-tags p {
   margin: 0 10px 0 0;
+}
+
+.tag-size-1 {
+  font-size: 12px;
+}
+
+.tag-size-2 {
+  font-size: 14px;
+}
+
+.tag-size-3 {
+  font-size: 16px;
+}
+
+.tag-size-4 {
+  font-size: 18px;
+}
+
+.tag-size-5 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.tag-size-6 {
+  font-size: 22px;
 }
 /*# sourceMappingURL=style.css.map */

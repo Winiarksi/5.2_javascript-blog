@@ -202,12 +202,10 @@ function generateTags() {
   let allTagsHTML = '';
 
   for (let tag in allTags) {
-    console.log('tag: ', tag);
-    console.log('allTags[tag]: ', allTags[tag]);
-    console.log('tagsParams: ', tagsParams);
-    const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a></li>';
+    // const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a></li>';
+    const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + '</a></li>';
 
-    console.log('tagLinkHTML: ', tagLinkHTML);
+    // console.log('tagLinkHTML: ', tagLinkHTML);
     allTagsHTML += tagLinkHTML;
     // allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
   }

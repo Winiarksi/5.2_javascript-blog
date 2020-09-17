@@ -52,6 +52,19 @@ body {
   flex: 1 0 0;
 }
 
+.tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
+  flex: 1 0 0;
+  text-decoration: none;
+}
+.tags li a{
+  padding: 8px 8px;
+  text-decoration: none;
+}
+
 .posts {
   flex: 2 0 0;
 }
@@ -118,4 +131,29 @@ body {
   p {
     margin: 0 10px 0 0;
   }
+}
+
+.tag-size-1 {
+  font-size: 12px;
+}
+
+.tag-size-2 {
+  font-size: 14px;
+}
+
+.tag-size-3 {
+  font-size: 16px;
+}
+
+.tag-size-4 {
+  font-size: 18px;
+}
+
+.tag-size-5 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.tag-size-6 {
+  font-size: 22px;
 }
