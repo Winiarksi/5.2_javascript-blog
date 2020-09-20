@@ -350,12 +350,13 @@ function generateAuthors() {
     /* make html variable with empty string */
     console.log('second for: author: ', author);
     const authorsParams = calculateAuthorsParams(allAuthors);
-    console.log('articleAuthor: ', articleAuthor);
     console.log('authorsParams: ', authorsParams);
-
+    console.log('allAuthors[author]: ', allAuthors[author]);
+    // const calculateValue = calculateAuthorClass(allAuthors[author], authorsParams);
+    const calculateValue = calculateAuthorClass(allAuthors[author], authorsParams);
+    console.log('calculateValue: ', calculateValue);
     /* generate HTML of the link */
-    // const linkHTML = '<li><a href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>';
-    const linkHTML = '<li><a class= "' + calculateAuthorClass(allAuthors[articleAuthor], authorsParams) + '" href="#author-' + author + '">' + author + '</a></li>';
+    const linkHTML = '<li><a class= "' + calculateValue + '" href="#author-' + author + '">' + author + '</a></li>';
     html += linkHTML;
     console.log('html: ', html);
 
