@@ -337,11 +337,6 @@ function generateAuthors() {
   console.log('----------------------------------------------------: ');
   console.log('before after secound for: ', allAuthors);
 
-  //   for (let country of Object.keys(obj)) {
-  //     var capital = obj[country];
-  //     console.log(country, capital);
-  // }
-
   for (let author of Object.keys(allAuthors)) {
 
     /* [NEW] find list of tags in right column */
@@ -380,34 +375,18 @@ function authorClickHandler(event) {
   const clickedElement = this;
   console.log('clickedElement:', clickedElement);
 
-  // var htmlString = this.getElementsByClassName('author-*')[0].innerHTML;
-  var exact = document.querySelectorAll('.authors');
-  console.log('exact.length: ', exact.length);
-
-  for (var i = 0; i < exact.length; ++i) {
-    console.log('exact[' + i + ']: ', exact[i]);
-  }
-
-  var htmlString =
-    console.log('htmlString: ' + htmlString);
-
-
   const href = this.getAttribute('href');
-  console.log('tag before replace: ' + href);
 
+  const author = href.replace('#author-', '');
+  console.log('author after replace: ', author);
 
-  // const author = href.replace('#author-', '');
-  const author = this.getElementsByClassName('author-name')[0].innerHTML;
-
-  console.log('author: ', author);
-
-  const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author-"]'); // do ogarnięcia 
+  const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author-"]');
 
   for (let activeAuthorLink of activeAuthorLinks) {
     activeAuthorLink.classList.remove('active');
   }
 
-  const hrefAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');// do ogarnięcia 
+  const hrefAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');
 
   for (let hrefAuthorLink of hrefAuthorLinks) {
 
