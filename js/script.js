@@ -289,8 +289,10 @@ function calculateAuthorsParams(authors) {
     max: '0',
     min: '999999'
   };
+  console.log('calculate authors: ', authors);
 
   for (let author in authors) {
+    console.log('calculate author: ', author);
     params.max = authors[author] > params.max ? authors[author] : params.max;
     params.min = Math.min(authors[author], params.min);
   }
@@ -331,21 +333,29 @@ function generateAuthors() {
     } else {
       allAuthors[articleAuthor]++;
     }
+  }
+  console.log('----------------------------------------------------: ');
+  console.log('before after secound for: ', allAuthors);
 
+  //   for (let country of Object.keys(obj)) {
+  //     var capital = obj[country];
+  //     console.log(country, capital);
+  // }
 
+  for (let author of Object.keys(allAuthors)) {
 
     /* [NEW] find list of tags in right column */
     const authorList = document.querySelector('.authors');
 
     /* make html variable with empty string */
-
+    console.log('second for: author: ', author);
     const authorsParams = calculateAuthorsParams(allAuthors);
-    console.log('articleAuthor: ', articleAuthor, author);
+    console.log('articleAuthor: ', articleAuthor);
     console.log('authorsParams: ', authorsParams);
 
     /* generate HTML of the link */
     // const linkHTML = '<li><a href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>';
-    const linkHTML = '<li><a class= "' + calculateAuthorClass(allAuthors[articleAuthor], authorsParams) + '" href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>';
+    const linkHTML = '<li><a class= "' + calculateAuthorClass(allAuthors[articleAuthor], authorsParams) + '" href="#author-' + author + '">' + author + '</a></li>';
     html += linkHTML;
     console.log('html: ', html);
 
@@ -369,8 +379,16 @@ function authorClickHandler(event) {
   const clickedElement = this;
   console.log('clickedElement:', clickedElement);
 
-  var htmlString = this.getElementsByClassName('author-name')[0].innerHTML;
-  console.log('htmlString: ' + htmlString);
+  // var htmlString = this.getElementsByClassName('author-*')[0].innerHTML;
+  var exact = document.querySelectorAll('.authors');
+  console.log('exact.length: ', exact.length);
+
+  for (var i = 0; i < exact.length; ++i) {
+    console.log('exact[' + i + ']: ', exact[i]);
+  }
+
+  var htmlString =
+    console.log('htmlString: ' + htmlString);
 
 
   const href = this.getAttribute('href');
