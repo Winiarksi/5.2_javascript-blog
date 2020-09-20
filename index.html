@@ -242,7 +242,8 @@
                             </ul>
                         </div>
                     </article>
-                    <article class="post" id="article-10" data-tags="code design news reviews" data-author="George Tuxedo">
+                    <article class="post" id="article-10" data-tags="code design news reviews"
+                        data-author="George Tuxedo">
                         <h3 class="post-title">Article 10</h3>
                         <p class="post-author"></p>
                         <div class="post-content">
@@ -309,6 +310,10 @@
         </div>
     </div>
     <!-- TOFIX ładowanie plików js -->
+    <script id="template-article-link" type="text/x-handlebars-template">
+        <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/script.js"></script>
 </body>
