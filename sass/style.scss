@@ -34,6 +34,7 @@ body {
   text-transform: uppercase;
   font-family: $font-header;
   font-weight: 600;
+  text-align: center;
   span {
     text-transform: none;
     font-weight: 400;
@@ -105,13 +106,8 @@ body {
   }
 }
 
-/* Authors */
 
-.authors {
-  li {
-    margin-bottom: 12px;
-  }
-}
+
 
 /* Post */
 
@@ -155,5 +151,45 @@ body {
 }
 
 .tag-size-6 {
+  font-size: 22px;
+}
+
+/* Authors */
+.authors {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
+  flex: 1 0 0;
+
+  p {
+    margin: 0 10px 0 0;
+  }
+}
+.authors a{  text-decoration: none;}
+
+.author-size-1 {
+  font-size: 12px;
+}
+
+.author-size-2 {
+  font-size: 14px;
+}
+
+.author-size-3 {
+  font-size: 16px;
+}
+
+.author-size-4 {
+  font-size: 18px;
+}
+
+.author-size-5 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.author-size-6 {
   font-size: 22px;
 }

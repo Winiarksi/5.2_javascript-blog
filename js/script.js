@@ -27,7 +27,7 @@ function generateTitleLinks(customSelector = '') {
   const titleList = document.querySelector(optTitleListSelector);
 
   console.log('titleList: ', titleList);
-  /* for each article */
+  
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
   html = '';
   console.log('articles length: ', articles.length);
@@ -110,9 +110,6 @@ function titleClickHandler(event) {
 
 }
 
-
-
-// const optTagsListSelector = '.tags.list'; // czemu pisze się razem ? 
 generateTags();
 
 function calculateTagsParams(tags) {
@@ -148,7 +145,6 @@ function generateTags() {
   const articlesForTags = document.querySelectorAll(optArticleSelector);
   console.log(articlesForTags);
 
-  /* START LOOP: for every article: */
   for (let article of articlesForTags) {
 
     /* find tags wrapper */
@@ -165,7 +161,6 @@ function generateTags() {
     const articleTagsArray = articleTags.split(' ');
     console.log('tags: ', articleTagsArray);
 
-    /* START LOOP: for each tag */
     for (let tag of articleTagsArray) {
       /* generate HTML of the link */
       const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
@@ -181,21 +176,16 @@ function generateTags() {
       } else {
         allTags[tag]++;
       }
-      /* END LOOP: for each tag */
 
     }
 
     /* insert HTML of all the links into the tags wrapper */
     tagsWrapper.innerHTML = html;
 
-    /* END LOOP: for every article: */
   }
 
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector('.tags');
-  // console.log('tagList: ', tagList);
-  // console.log('allTags: ', allTags);
-  // console.log('tagList.innerHTML: ', tagList);
 
   const tagsParams = calculateTagsParams(allTags);
   console.log('tagsParams: ', tagsParams);
@@ -203,12 +193,9 @@ function generateTags() {
   let allTagsHTML = '';
 
   for (let tag in allTags) {
-    // const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a></li>';
     const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + '</a></li>';
 
-    // console.log('tagLinkHTML: ', tagLinkHTML);
     allTagsHTML += tagLinkHTML;
-    // allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
   }
 
   tagList.innerHTML = allTagsHTML;
@@ -238,21 +225,17 @@ function tagClickHandler(event) {
   /* find all tag links with class active */
 
   const tagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
-  /* START LOOP: for each active tag link */
   for (let tagLink of tagLinks) {
     //  remove class active 
     tagLink.classList.remove('active');
-    /* END LOOP: for each active tag link */
   }
   /* find all tag links with "href" attribute equal to the "href" constant */
   const hrefTagLinks = document.querySelectorAll('a[href="' + href + '"]');
 
-  /* START LOOP: for each found tag link */
   for (let hrefTagLink of hrefTagLinks) {
     console.log('active lik: ', hrefTagLink);
     //add class active */
     hrefTagLink.classList.add('active');
-    /* END LOOP: for each found tag link */
   }
 
   /* execute function "generateTitleLinks" with article selector as argument */
@@ -280,8 +263,6 @@ addClickListenersToTags();
 
 const optArticlePostSelector = '.post-author';
 generateAuthors();
-//__________________________________________________generateAuthors______________________________________________________
-
 
 function calculateAuthorsParams(authors) {
 
@@ -334,8 +315,6 @@ function generateAuthors() {
       allAuthors[articleAuthor]++;
     }
   }
-  console.log('----------------------------------------------------: ');
-  console.log('before after secound for: ', allAuthors);
 
   for (let author of Object.keys(allAuthors)) {
 
@@ -364,7 +343,6 @@ function generateAuthors() {
   console.log('authorsWrapper.length2: ', authorsWrapper);
 }
 
-//__________________________________________________authorClickHandler______________________________________________________
 /**
  * Dodajemy akcja po kliknieciu w autora
  */
